@@ -109,7 +109,7 @@ let init = function() {
 }
 
 let initUserMedia = function( factor ) {
-    console.log( 'initUserMedia()', factor );
+    console.log( 'initUserMedia()' );
 
     if( !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia ) {
         return false;
@@ -118,6 +118,8 @@ let initUserMedia = function( factor ) {
     if( !factor ) {
         let factor = 2;
     }
+
+    console.log( 'factor', factor );
 
     let hint = {
         audio: false,
