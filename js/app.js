@@ -25,7 +25,9 @@ const settings = {
     },
     transition: {
         duration: 2000
-    }
+    },
+    markerSize: 0.475,
+    videoSize: 5
 }
 
 var state = {
@@ -67,7 +69,8 @@ let material = new THREE.MeshStandardMaterial( {
     roughness: 0.6,
     metalness: 0.2,
     map: texture,
-    transparent: true
+    transparent: true,
+    opacity: 0.5
 } );
 
 
@@ -186,7 +189,7 @@ let initScene = function() {
 /**
  * LIGHTS
  */
-    const light = new THREE.AmbientLight( 0xcccccc );
+    const light = new THREE.AmbientLight( 0x666666 );
     scene.add( light );
 
 
@@ -197,7 +200,7 @@ let initScene = function() {
 
     const light3 = new THREE.PointLight( 0xcccccc );
     light3.position.set( 5, -10, 10 );
-    scene.add( light3 ); 
+    // scene.add( light3 ); 
 
 
 
@@ -233,12 +236,12 @@ let initScene = function() {
     let groundGeometry = new THREE.PlaneBufferGeometry( 1, 1, 1 );
 
     // Object 1
-    let groundMaterial = new THREE.MeshLambertMaterial( {
+    let groundMaterial = new THREE.MeshStandardMaterial( {
         color: new THREE.Color( 0x000000 ),
         transparent: true,
-        opacity: 0.4,
-        side: THREE.DoubleSide,
-        alphaMap: new THREE.TextureLoader().load( 'img/shadow.png' )
+        opacity: 0,
+        side: THREE.DoubleSide
+        // alphaMap: new THREE.TextureLoader().load( 'img/shadow.png' )
     } )
 
     ground = new THREE.Mesh( groundGeometry, groundMaterial ); 
@@ -429,23 +432,21 @@ let addItem = function() {
 
     state.itemOpacity = 0;    
 
-    let geometry = new THREE.CylinderBufferGeometry( 1, 1, 0.25, 32, 1 );
-    geometry.center();
+    let geometry = new THREE.PlaneBufferGeometry( 1, 0.5625, 4 );
 
     // Object 1
-    let _material = material.clone();
-    _material.color = colors[ 'marker' + state.currentMarkerId ];
-
-    let object = new THREE.Mesh( geometry, _material ); 
+    let object = new THREE.Mesh( geometry, material ); 
     object.name = 'item';
 
-    object.rotation.y = THREE.Math.degToRad( 90 )
+    object.position.x = ( -1 * settings.videoSize / 2 ) + settings.markerSize;
+    object.position.y = ( ( -1 * settings.videoSize / 2 ) * 0.5625 ) + settings.markerSize;
+    object.position.z = 0.1;
 
-    object.position.x = 0;
-    object.position.y = 0;
-    object.position.z = 3.5;
-
-    object.scale.set( 2, 2, 2 );
+    object.scale.set( 
+        settings.videoSize,
+        settings.videoSize,
+        settings.videoSize
+    );
 
 
     ARObject = object;
@@ -494,11 +495,11 @@ let draw = function() {
 
         // autorotate
         if( ARObject ) {
-            autoRotate.rotation.z = autoRotate.rotation.z + settings.autoRotate.z;
+            // sautoRotate.rotation.z = autoRotate.rotation.z + settings.autoRotate.z;
         }
     }
 
-    ground.material.opacity = state.itemOpacity * 0.4;    
+    // ground.material.opacity = state.itemOpacity * 0.4;    
     
     renderer.render( scene, camera );
 };
