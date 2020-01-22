@@ -161,7 +161,9 @@ let initUserMedia = function( factor ) {
 
             video.srcObject = stream;            
         } )
-        .fail( function() {
+        .catch( function( error ) {
+            console.log( error );
+            
             if( factor > 1 ) {
                 initUserMedia( 1 );
             }
