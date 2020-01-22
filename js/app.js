@@ -26,8 +26,8 @@ const settings = {
     transition: {
         duration: 2000
     },
-    markerSize: 0.475,
-    videoSize: 5
+    markerSize: 1,
+    videoSize: 6.75
 }
 
 var state = {
@@ -438,8 +438,8 @@ let addItem = function() {
     let object = new THREE.Mesh( geometry, material ); 
     object.name = 'item';
 
-    object.position.x = -0.5 * settings.markerSize;
-    object.position.y = -0.5 * settings.markerSize;
+    object.position.x = ( 0.5 * settings.videoSize ) - ( 0.5 * settings.markerSize );
+    object.position.y = ( -0.5 * settings.videoSize * 0.5625 ) + ( 0.5 * settings.markerSize );
     object.position.z = 0.1;
 
     object.scale.set( 
