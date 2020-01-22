@@ -289,6 +289,7 @@ let initTracking = function() {
 
 
     renderer.setSize( sw, sh );
+    renderer.setPixelRatio( window.devicePixelRatio );
 
 
     console.table( [
