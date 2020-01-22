@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Multiple Markers</title>
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loading">
+
+    <section class="head">
+        <h1 class="head-title">
+            Site title
+        </h1>
+    </section>
+
+    <section class="preview">
+        <p class="preview-subtitle">
+            A conversation with
+        </p>
+        <h2 class="preview-title">
+            Maxi Muster
+        </h2>
+    </section>    
+    
+
+<!--
+==================
+STATS    
+==================
+-->
+    
+<!--
+    <div class="ui stats">    
+        
+        <div id="stats1" class="stats-item">
+            <p class="stats-item-title">
+                Main
+            </p>
+        </div>
+        
+        <div id="stats2" class="stats-item">
+            <p class="stats-item-title">
+                Worker
+            </p>
+        </div>
+        
+    </div>
+-->    
+
+<!--
+==================
+CAMERA VIDEO    
+==================
+-->    
+    
+
+    <div id="app">
+        <video 
+            loop 
+            autoplay 
+            muted 
+            playsinline 
+            id="video">
+        </video>
+    </div>
+    
+    
+<!--
+==================
+VIDEO
+==================
+-->     
+    
+    
+    <video 
+        loop 
+        autoplay 
+        muted 
+        playsinline 
+        id="arvideo">
+        <source type="video/mp4" src="video/video--01.mp4">
+    </video>
+
+    
+    <script src="https://raw.githack.com/mrdoob/stats.js/master/build/stats.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
+    <script src="js/app.js"></script>
+    
+    <script>
+        
+
+/**
+ * STATS
+ */
+
+        
+        
+// /**
+//  * APP / ELEMENTS
+//  */        
+// let container = document.getElementById( 'app' );
+// let video = document.getElementById( 'video' );
+        
+
+// /**
+//  * APP / VIDEO STREAM
+//  */               
+// if( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
+//     let hint = {
+//         audio: false,
+//         video: true
+//     };
+
+//     if( window.innerWidth < 800 ) {
+//         let width = ( window.innerWidth < window.innerHeight ) ? 240 : 360;
+//         let height = ( window.innerWidth < window.innerHeight ) ? 360 : 240;
+
+//         let aspectRatio = window.innerWidth / window.innerHeight;
+
+//         console.log( width, height );
+
+//         hint = {
+//             audio: false,
+//             video: {
+//                 facingMode: 'environment',                
+//                 width: { min: width, max: width }
+//             },
+//         };
+
+//         console.log( hint );        
+//     }
+    
+//     navigator.mediaDevices.getUserMedia( hint ).then( function( stream ) {
+//         video.srcObject = stream;
+//         video.addEventListener( 'loadedmetadata', () => {
+//             video.play();
+
+//             console.log( 'video', video, video.videoWidth, video.videoHeight );
+
+//             start(
+//                 container, 
+//                 video, 
+//                 video.videoWidth, 
+//                 video.videoHeight, 
+//                 function() { 
+//                     statsMain.update()
+//                 }, 
+//                 function() { 
+//                     statsWorker.update();
+//                 },
+//                 null
+//             );
+//         } );
+//     } );
+// }
+
+    </script>    
+</body>
+</html>
