@@ -438,8 +438,8 @@ let addItem = function() {
     let object = new THREE.Mesh( geometry, material ); 
     object.name = 'item';
 
-    object.position.x = ( -1 * settings.videoSize / 2 ) + settings.markerSize;
-    object.position.y = ( ( -1 * settings.videoSize / 2 ) * 0.5625 ) + settings.markerSize;
+    object.position.x = -0.5 * settings.markerSize;
+    object.position.y = -0.5 * settings.markerSize;
     object.position.z = 0.1;
 
     object.scale.set( 
