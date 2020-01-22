@@ -440,7 +440,7 @@ let addItem = function() {
 
     object.position.x = ( 0.5 * settings.videoSize ) - ( 0.5 * settings.markerSize );
     object.position.y = ( -0.5 * settings.videoSize * 0.5625 ) + ( 0.5 * settings.markerSize );
-    object.position.z = 0.1;
+    object.position.z = 0.25;
 
     object.scale.set( 
         settings.videoSize,
