@@ -108,9 +108,15 @@ let init = function() {
     initUserMedia();
 }
 
-let initUserMedia = function() {
+let initUserMedia = function( factor ) {
+    console.log( 'initUserMedia()', factor );
+
     if( !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia ) {
         return false;
+    }
+
+    if( !factor ) {
+        let factor = 2;
     }
 
     let hint = {
@@ -118,8 +124,8 @@ let initUserMedia = function() {
         video: true
     };
 
-    let short = 240 * 2;
-    let long = 360 * 2;
+    let short = 240 * factor;
+    let long = 360 * factor;
 
     if( window.innerWidth < 800 ) {
         let videoWidth = ( window.innerWidth < window.innerHeight ) ? short : long;
@@ -135,7 +141,7 @@ let initUserMedia = function() {
             },
         };
 
-        console.log( hint );        
+        console.log( hint, factor );        
     }
     
     navigator.mediaDevices.getUserMedia( hint )
@@ -152,7 +158,12 @@ let initUserMedia = function() {
             } );
 
             video.srcObject = stream;            
-    } );
+        } )
+        .fail( function() {
+            if( factor > 1 ) {
+                initUserMedia( 1 );
+            }
+        } );
 }
 
 let initScene = function() {
