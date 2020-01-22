@@ -116,7 +116,7 @@ let initUserMedia = function( factor ) {
     }
 
     if( !factor ) {
-        let factor = 2;
+        factor = 2;
     }
 
     console.log( 'factor', factor );
@@ -163,7 +163,7 @@ let initUserMedia = function( factor ) {
         } )
         .catch( function( error ) {
             console.log( error );
-            
+
             if( factor > 1 ) {
                 initUserMedia( 1 );
             }
