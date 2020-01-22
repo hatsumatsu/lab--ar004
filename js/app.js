@@ -118,8 +118,8 @@ let initUserMedia = function() {
         video: true
     };
 
-    let short = 240 * 1.5;
-    let long = 360 * 1.5;
+    let short = 240 * 2;
+    let long = 360 * 2;
 
     if( window.innerWidth < 800 ) {
         let videoWidth = ( window.innerWidth < window.innerHeight ) ? short : long;
